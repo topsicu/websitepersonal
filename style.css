@@ -1,0 +1,378 @@
+/* paleta culori: #1b191a negru, #943A1F portocaliu, #e9e4e0 alb */
+/* animatie text */
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 5rem rgba(148, 58, 31, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20rem rgba(148, 58, 31, 1), 0 0 30rem rgba(148, 58, 31, 0.8);
+  }
+}
+
+/* alta animatie */
+@keyframes hud-pulse {
+  from {
+    box-shadow: inset 0 0 8px rgba(234, 88, 12, 0.15);
+  }
+  to {
+    box-shadow: inset 0 0 22px rgba(234, 88, 12, 0.45);
+  }
+}
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+html {
+  font-size: calc(100vw / 1920); /* 1rem = 1px la 1920px latime, scalabil proportional */
+}
+
+body {
+  font-family: 'Bebas', sans-serif;
+  background-color: #1b191a;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  border: 2px solid rgba(234, 88, 12, 0.35);
+  animation: hud-pulse 4s ease-in-out infinite alternate;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 4px,           
+    rgba(0, 0, 0, 0.45) 4px,   
+    rgba(0, 0, 0, 0.45) 7px
+  );
+}
+
+main {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  grid-template-areas: "main aside";
+}
+
+li::before{
+  content: "> ";
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100rem;
+  background-color: #1b191a;
+  text-align: center;
+  padding-left: 242rem;
+}
+
+/* fonturi */
+@font-face {
+  font-family: 'Minecraft';
+  src: url('fonts/Minecraft.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bebas';
+  src: url('fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* meniu lateral */
+.sidebar {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 130rem; 
+  height: 100dvh;
+  background-color: #1b191a;
+  /* ascunde meniu */
+  transform: translateX(-100%);
+  /* animatie bounce meniu */
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  z-index: 1000;
+}
+
+/* actiune la hover */
+.sidebar:hover {
+  transform: translateX(0);
+}
+
+/* buton meniu */
+.menu-handle {
+  position: absolute;
+  right: -100rem;
+  top: -2rem;
+  width: 100rem;
+  height: 100rem;
+  background-color: rgb(148, 58, 31);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border-radius: 0 0 35rem 0;
+}
+
+
+/* stil butoane */
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.sidebar li {
+  width: 100%;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* forma butoane */
+  color: #ffffff;
+  background-color: #943A1F;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 15rem;
+  transition: background-color 300ms ease 0ms, color 300ms ease 150ms, transform 200ms ease 100ms;
+}
+
+.sidebar li:nth-child(even) a {
+  filter: brightness(80%);
+}
+
+.sidebar li:nth-child(4) a{
+  background-color: #1b191a;
+  filter: brightness(100%);
+  color: #1b191a;
+}
+
+.sidebar li:nth-child(4) a:hover{
+  color:#534c50;
+}
+
+.sidebar a:hover {
+  background-color: #682714;
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 8rem;
+  box-sizing: border-box;
+}
+
+.sidebar-footer img {
+  width: 100%;
+  padding: 10rem;
+  margin-top: auto;
+}
+
+li a:hover {
+  background-color: #943A1F;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  text-decoration: none;
+  padding: 10rem;
+  margin: 10rem;
+}
+
+h2::before {
+  content: "> ";
+}
+h2::after {
+  content: "_";
+  color: #943A1F;
+  animation: blink 1s infinite;
+}
+ul li a {
+  text-decoration: none;
+}
+/* meniu lateral finish */
+
+.continut{
+  padding-left: 150rem;
+  color: #e9e4e0;
+  font-size: 15rem;
+}
+
+.despre {
+  font-size: 48rem;
+  color: #943A1F;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 48rem;
+}
+
+.tabele {
+  display: flex;
+  align-items: flex-start;
+  font-size: 30rem;
+  gap: 30rem;
+}
+
+.textdespre {
+  font-size: 64rem; 
+  text-align: left;
+  padding-left: 10rem;
+  margin-top: -10rem;
+}
+
+table {
+  display: flex;
+  padding: 10rem;
+  border-collapse: collapse;
+  border: 7rem solid #943A1F;
+}
+table tr:first-child {
+  background-color: #943A1F;
+  color: #ffffff;
+  font-weight: bold;
+}
+table tr:not(:first-child):hover {
+  background-color: rgba(148, 58, 31, 0.25);
+  transition: background-color 0.2s ease;
+}
+
+th, td {
+  padding: 6rem;
+  border: 3rem solid #943A1F;
+}
+
+aside {
+  grid-area: aside;
+  background-color: #1b191a;
+  padding: 20rem;
+  color: #e9e4e0;
+  font-size: 32rem; /*placeholde*/
+  margin: 20rem;
+  height: fit-content;
+}
+
+aside a {
+  color: #e9e4e0;
+  text-decoration: none;
+  border-bottom: 2rem solid #943A1F;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+aside a:hover {
+  background-color: #943A1F;
+  color: #ffffff;
+}
+
+aside p {
+  font-size: 32rem;
+}
+
+footer {
+  width: 100%;
+  background-color: #1b191a;
+  color: #ffffff;
+  padding: 20rem 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.shortdespre {
+  letter-spacing: 1rem;
+  line-height: 50%;
+}
+
+.titlu {
+  color: #943A1F;
+  animation: glowPulse 1500ms infinite ease-out;
+}
+
+p {
+  font-size: 25rem;
+}
+
+.giftabele {
+  height: 400rem;
+  width: 400rem;
+  border-radius: 20rem;
+}
+
+#achivements {
+  font-size: 32rem;
+}
+#achivements li:nth-of-type(odd) {
+  color: #e9e4e0;
+}
+#achivements li:nth-of-type(even) {
+  color: #943A1F;
+}
+
+
+    /* site responsive */
+    @media (max-width: 768px) {
+      html {
+        font-size: clamp(0.75px, calc(100vw / 480), 1.4px);
+      }
+
+      header {
+        padding-left: 110rem;
+        height: auto;
+        padding-top: 20rem;
+        padding-bottom: 20rem;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        padding-left: 30rem;
+        padding-right: 30rem;
+      }
+
+      .continut {
+        padding-left: 0;
+      }
+
+      .tabele {
+        flex-direction: column;
+        gap: 20rem;
+      }
+
+      .shortdespre {
+        line-height: 1.2;
+      }
+
+      .sidebar {
+        width: 110rem;
+      }
+
+      .menu-handle {
+        width: 80rem;
+        height: 80rem;
+        right: -80rem;
+        font-size: 16px;
+      }
+    }
